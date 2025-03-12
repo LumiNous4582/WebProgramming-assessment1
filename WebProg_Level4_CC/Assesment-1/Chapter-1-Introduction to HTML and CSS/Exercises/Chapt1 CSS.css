@@ -1,0 +1,36 @@
+
+body {
+    background-color: #FFE5B4;
+    color: #3D3D3D;
+    font-family: Arial, sans-serif;
+	margin-left: auto;
+    margin-right: auto;
+	margin-top: 30px;
+    margin-bottom: 30px;
+    width:60%;  
+    font-size: 20px;	
+}
+
+h1{
+    color: #D72638;
+	text-align:CENTER;
+}
+h2{
+    color: #D72638;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+ul, ol, p {
+    color: #3D3D3D;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+.border {
+    background-color: #FFF5E1;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+
+
+}
