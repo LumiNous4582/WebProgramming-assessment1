@@ -1,0 +1,33 @@
+Quick reference guide for the HTML tags used
+
+<!DOCTYPE html>	Declares the document type as HTML5.
+
+<html>	Root element of the HTML document.
+
+<head>	Contains meta information, title, and styles.
+
+<title>	Sets the title of the webpage (appears in the browser tab).
+
+<style>	Contains internal CSS to style the webpage.
+
+<body>	Defines the main content of the webpage.
+
+<div>	A container element (used here with a class for styling).
+
+<h1>	Main heading (largest text, used for the recipe title).
+
+<h2>	Subheading (used for ingredients and how To Make sections).
+
+<a>	Hyperlink tag (used for an image and source credit).
+
+<img>	Embeds an image (hawaiian pizza image).
+
+<p>	Paragraph text (used for the description and credit section).
+
+<ul>	Unordered list (used for listing ingredients).
+
+<ol>	Ordered list (used for step-by-step instructions).
+
+<li>	List item (used within <ul> and <ol> for ingredients and steps).
+
+<br>	Line break (used to add spacing between list items).
