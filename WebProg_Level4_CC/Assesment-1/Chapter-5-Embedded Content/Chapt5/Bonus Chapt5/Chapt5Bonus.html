@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sound Board</title>
+<style>
+body {
+    font-family: Arial;
+    background-color: #9fdcf2;
+    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png"); /*Adds a transparent background*/
+
+} 
+h1 {
+    text-align: center;
+}
+/*Border to put all content in*/
+.Container {
+    background-color: #9bbbeb;
+    background-image: url("https://www.transparenttextures.com/patterns/diagmonds-light.png"); /*Adds a transparent background*/    
+    border: 3px solid black;
+	border-radius: 10px;
+	max-width: 700px;
+	padding: 10px;
+	margin: auto; /*Puts border in the middle*/
+	margin-top: 30px;
+}
+
+.SoundBoard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: auto; /*Puts content(Buttons) to the middle*/
+}
+
+.SoundButton{
+    padding: 15px;
+    font-size: 20px;
+    border: 3px solid black;
+    background-color: white;
+    color: black;
+	width: 140px;
+	height: 120px
+}
+/*Style when mouse hovering on buttons*/
+.SoundButton:hover {
+    background-color: red;
+    color: yellow;
+	cursor: pointer; /*Changes mouse image*/
+}
+
+</style>
+</head>
+
+<body>
+  <div class = "Container">
+  <h1>Sound Sampler<h1>
+  <div class = "SoundBoard">
+  <!--Buttons-->
+  <button class = "SoundButton" data-sound = "Audio\WebProg_Level4_CC_Assesment-1_Chapter-5-Embedded Content_Exercises_Audio Sampler_Audio_imconfused.mp3">Im Confused</button>
+  <button class = "SoundButton" data-sound = "Audio\WebProg_Level4_CC_Assesment-1_Chapter-5-Embedded Content_Exercises_Audio Sampler_Audio_iateascotchegg.mp3">I Ate a Scotch Egg</button>
+  <button class = "SoundButton" data-sound = "Audio\WebProg_Level4_CC_Assesment-1_Chapter-5-Embedded Content_Exercises_Audio Sampler_Audio_hellopartridge.mp3">Hello Partridge</button>
+  <button class = "SoundButton" data-sound = "Audio\WebProg_Level4_CC_Assesment-1_Chapter-5-Embedded Content_Exercises_Audio Sampler_Audio_emailoftheevening.mp3">Email Of The Evening</button>
+  <button class = "SoundButton" data-sound = "Audio\WebProg_Level4_CC_Assesment-1_Chapter-5-Embedded Content_Exercises_Audio Sampler_Audio_dan.mp3">Dan</button>
+  <button class = "SoundButton" data-sound = "Audio\WebProg_Level4_CC_Assesment-1_Chapter-5-Embedded Content_Exercises_Audio Sampler_Audio_bangoutoforder.mp3">Bang Out Of Order</button>
+  <button class = "SoundButton" data-sound = "Audio\WebProg_Level4_CC_Assesment-1_Chapter-5-Embedded Content_Exercises_Audio Sampler_Audio_back-of-the-net (1).mp3">Back Of The Net</button>
+  <button class = "SoundButton" data-sound = "Audio\WebProg_Level4_CC_Assesment-1_Chapter-5-Embedded Content_Exercises_Audio Sampler_Audio_ah-ha (1).mp3">Ah Ha</button>
+  <button class = "SoundButton" data-sound = "Audio\error_CDOxCYm.mp3">Error</button>
+  <button class = "SoundButton" data-sound = "Audio\heavenly-music-gaming-sound-effect-hd-mp3cut.mp3">Heavenly Music</button>
+  <button class = "SoundButton" data-sound = "Audio\awkward-cricket-sound-effect.mp3">Cricket</button>
+  <button class = "SoundButton" data-sound = "Audio\loading-lost-connection-green-screen-with-sound-effect-2_K8HORkT.mp3">Lost Connection</button>
+  <button class = "SoundButton" data-sound = "Audio\undertakers-bell_2UwFCIe.mp3">Undertakers Bell</button>
+  <button class = "SoundButton" data-sound = "Audio\a-few-moments-later-sponge-bob-sfx-fun.mp3">Few Moments Later</button>
+  <button class = "SoundButton" data-sound = "Audio\perfect-fart.mp3">Fart</button>
+  <button class = "SoundButton" data-sound = "Audio\dun-dun-dun-sound-effect-brass_8nFBccR.mp3">Dun Dun Dun</button>
+  </div>
+  </div>
+<script>
+//Selects the class elements that has "SoundButton"
+document.querySelectorAll(".SoundButton").forEach(button => {
+   //Event listener when "click"
+   button.addEventListener("click", () => {
+        //Selects the data-sound of the clicked button then play it
+        let sound = new Audio(button.dataset.sound);
+        sound.play();
+    });
+});
+
+</script>
+</body>
+
+
+</html>
