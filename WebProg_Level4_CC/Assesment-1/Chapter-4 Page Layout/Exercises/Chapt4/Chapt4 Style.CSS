@@ -1,0 +1,99 @@
+/*Stylesheet*/
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #2E0D41;
+    color: white;
+    padding: 20px;
+}
+
+/*Nav Bar style*/
+nav ul {
+    list-style: none; /*Removing list markers*/
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none; /*Removing Underline under text*/
+}
+nav ul li a:hover {
+    color: yellow; /*Adds color when hovering on nav*/
+    text-decoration: underline; /*Adds an underline when hovering on nav*/
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+
+/*Main Content section style*/
+.welcome {
+    width: 60%;
+    text-align: left;
+	padding: 20px;
+}
+
+.welcome h2 {
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 3px solid black;
+    display: inline-block;
+}
+
+.welcome img {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/*Side content style*/
+.lineup {
+    background-color: #12346F;
+    color: white;
+    width: 30%;
+    padding: 20px;
+    text-align: left;
+}
+
+.lineup h2 {
+    border-bottom: 3px solid white;
+    display: inline-block;
+}
+
+.lineup ul {
+    padding-left: 20px;
+}
+
+.images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.images img {
+    width: 99%;
+	padding: 5px;
+}
+
+
+footer {
+    background-color: #61007B;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+
+}

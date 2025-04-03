@@ -1,0 +1,76 @@
+body {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+}
+/*Nav Style*/
+nav ul {
+    display: flex; /*Makes it flow in one line and not break*/
+	justify-content: center;
+    list-style: none; /*Gets rid of the list-style of the Ul*/
+    background: #808080;
+    padding: 0;
+    margin: 0;
+	font-size: 30px
+	
+}
+
+nav ul li {
+    padding: 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none; /*Gets rid of underline*/
+}
+/*Makes a black border when hovering over nav bar*/
+nav ul li a:hover {
+    background: #000000;
+	padding: 5px;
+    border-radius: 5px;
+}
+/*Makes the info in the columns more aligned*/
+h2, ul, p {
+    margin-left: 25px;
+}
+main {
+    display: flex; /*Makes the columns in <main> flow in one line - - - and not break*/
+    padding: 20px;
+	
+}
+
+.column {
+    flex: 1; /*Makes each column take equal space*/
+    padding: 5px;
+    background: #f4f4f4;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+button {
+    background: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+	margin-left: 10px;
+}
+
+button:hover {
+    background: #0056b3;
+	cursor: pointer; /*Changes mouse design when hovering over button*/
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #000000;
+    color: #ffffff;
+    margin-top: 30px;
+}
