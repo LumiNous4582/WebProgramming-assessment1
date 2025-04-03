@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head><title>Petrol Calculator</title>
+<style>
+/*StyleSheet*/
+body {
+   text-align:center;
+   font-size: 35px;
+   margin: 50px;
+   background-color: #808080; 
+   background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png"); /*Adds a transparent background*/
+
+}
+/*Puts a border around the content*/
+.CalculatorBox {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 5px solid #000000;
+    border-radius: 10px;
+    background-color: #F4FDFF;
+	background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png"); /*Adds a transparent background*/
+
+}
+input {
+    width: 90%;
+    padding: 8px;
+    margin: 5px auto;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    text-align: center;
+	font-size: 25px;
+}
+/*Add color when typing on user input*/
+input:focus {
+    border-color: #005A9C;
+    outline: none;
+}
+
+button {
+    background-color: #005A9C;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+	font-size: 20px;
+}
+/*When hovering over button change color*/
+button:hover {
+    background-color: #4169e1;
+}
+
+p {
+    font-size: 35px;
+    margin-top: 10px;
+}
+
+
+</style>
+
+</head>
+<body>
+
+  <div class = "CalculatorBox">
+  <h1>Petrol Calculator</h1>
+  
+  <label for = "Price">Petrol Price Per liter ($)</label>
+  <input type = "number" id = "Price" value = "1.72" step = "0.01"><!--User input-->
+
+  <label for = "Liters">Liters Purchased</label>
+  <input type = "number" id = "Liters" value = "0" step = "0.01"><!--User input-->
+  
+  <button id = "Calculate">Calculate</button>
+  <p>Total: <span id = "TotalCost">$0.00</span></p>
+  </div>
+  
+  <script>
+  //The script that makes the calculator function
+  document.getElementById("Calculate").addEventListener("click", function() {
+  
+  //Gets the input of both value's
+  let pricePerLiter = parseFloat(document.getElementById("Price").value);
+  let litersPurchase = parseFloat(document.getElementById("Liters").value);
+  
+  
+  //Calculates the total cost
+  let Total = pricePerLiter * litersPurchase;
+  
+  //Displays the output/result
+  document.getElementById("TotalCost").textContent = "$" + Total.toFixed(2);
+ 
+  });
+  </script>
+  
+  
+</body>
+
+</html>
