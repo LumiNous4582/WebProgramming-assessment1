@@ -20,7 +20,6 @@ function newRound() {
 	//Restart if play out of lives
     if (lives === 0) {
         message.textContent = "Game Over! Final Score: " + score;
-        restartButton.style.display = "block";
         return;
     }
     //Generates correct color
