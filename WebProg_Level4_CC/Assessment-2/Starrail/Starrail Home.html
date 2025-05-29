@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Honkai Starrail</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+
+      background-color: rgba(0 ,0 ,0 ,0.5);
+      height: 100;
+
+	  font-size: 120%;
+	  top: 0;
+
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+	
+	#toggle-audio {
+	  position: fixed;
+      bottom: 6%;
+      right: 20px;
+      z-index: 10;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;    
+	}
+	
+/*MAIN CONTENT STYLE------------------------------------------*/
+
+    .content {
+
+      position: relative;
+      z-index: 1;
+      color: white;
+      font-family: Arial black;
+      text-align: center;
+	  padding-top: 8%;
+
+	}
+	
+	h2  {
+	
+	  
+	 font-size: 250%;
+	 
+	}
+	
+	/*OVERVIEW CONTENT STYLE*/
+	#Overview  {
+	  
+	  width: 60%;
+	  margin: auto;
+
+	  
+	}
+
+	#Overview p {
+	  
+	  text-align: Justify;
+
+	}
+	
+	ul  {
+	
+	  text-align: left;
+	
+	}
+	/*CHARACTERS CONTENT STYLE*/
+	
+	#Characters  {
+
+	  width: 70%;
+	  margin: auto;
+	
+	}
+	
+    .character-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .character-card {
+      background: rgba(243, 228, 196, 0.8);
+      border-radius: 10px;
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+	
+    .character-card h3 {
+	
+	padding-bottom: 20px;
+
+    }
+
+    .character-card p {
+	
+	font-size: 65%;
+
+    }
+	
+    .character-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+	/*GAMEPLAY CONTENT STYLE*/
+    #Gameplay {
+      padding: 60px 15%;
+
+    }
+
+    #Gameplay h2 {
+      text-align: center;
+
+    }
+
+    .gameplay-block {
+      position: relative;
+      margin-bottom: 80px;
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .background-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .text-box {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40%;
+      padding: 25px;
+      background: rgba(243, 228, 196, 0.8);
+      color: #000000;
+      border: 2px solid #c9b189;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      font-family: 'Georgia', serif;
+    }
+
+    .text-box.left {
+      left: 30px;
+    }
+
+    .text-box.right {
+      right: 30px;
+      text-align: right;
+    }
+
+	/*MEDIA CONTENT STYLE*/
+      .SlideShow-Container {
+
+         position: relative;
+         margin: auto;
+		 overflow: hidden;
+
+
+	  }
+	  
+
+      .Slides  {
+
+         display:none;  /*Hides the Slides*/
+	     width: 100%;
+         height: 100%;
+
+	
+
+	  
+	  }
+
+      .Slides img  {
+         
+		 width: 50%;
+         height: 50%;
+		 object-fit: cover;
+		 margin-bottom: 6%;
+		 border-radius: 20px;
+	  
+	  }
+	  
+       /*CSS for nav buttons for slide*/
+	  .NavButtons button  {
+		  
+         position: absolute;
+	     top: 36%; /*centers the button near the middle*/
+		 padding: 0.5%;
+		 font-size: 300%;
+		 background-color: rgba(0,0,0,0.5); /*Sets BG color and abit of transparency*/
+		 color: #ffffff;
+		 border: none;
+         z-index: 5;
+		 cursor: pointer;
+       }
+      .NavButtons button:first-of-type  {
+		  
+         left:  12%;  
+       }
+      .NavButtons button:last-of-type  {
+		  
+         right: 12%;  
+       }
+      .NavButtons button:hover  {
+		  
+         background-color: rgba(255,255,255,0.4); /*Sets BG color and abit of transparency*/
+         color: #000000;		 
+       }
+	   
+
+/*NAVIGATION------------------------------------------*/
+
+    nav ul {
+        display: flex; /*Makes it flow in one line and not break*/
+	    justify-content: flex-end; /*Push push Ul to the left*/
+        list-style: none; /*Gets rid of the list-style of the Ul*/
+        padding: 0%;
+        margin: 0%;
+	    font-size: 25px;
+	
+    }
+	
+    nav ul li {
+        padding: 15px;
+		margin-right: 30px;
+    }
+
+    nav ul li a {
+        color: #ffffff;
+        text-decoration: none; /*Gets rid of underline*/
+		
+    }
+
+
+    /*Makes a colored border when hovering over nav bar*/
+    nav ul li a:hover {
+        background-color: rgba(138, 182, 214, 0.6);
+		color: 	#ffd700;
+	    padding: 5px;
+        border-radius: 5px;
+		transition: 0.2s ease;
+
+    }
+	
+    .header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(40, 40, 40, 0.6);
+        padding: 10px 20px;
+        font-size: 30px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 5;
+    }
+	
+    /*Game name style------------------------------------------*/
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 30px; /*Gap between button and game name*/
+    }
+
+    .header-left h1 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 35px;
+        font-family: Arial Black;
+    }
+	
+    /*back button style------------------------------------------*/
+    .header-left a {
+        color: white;
+        text-decoration: none;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid white;
+        font-size: 20px;
+    }
+    
+    .header-left a:hover {
+        background-color: rgba(138, 182, 214, 0.7);
+        color: #ffd700;
+        transition: 0.2s ease;
+    }
+	
+/*FOOTER------------------------------------------*/
+
+    footer  {
+        
+		font-size: 15px;
+        position: fixed;
+		bottom: 0;
+		width: 100%;
+	    background-color: rgba(40, 40, 40, 0.6);
+        color: #ffffff;
+		padding: 0.5%;
+		font-family: sans-serif;
+	
+	}
+  </style>
+</head>
+<body>
+
+  <audio id = "BGAudio" src = "Audio&Video\Star Rail (Login Menu BGM) - Honkai_ Star Rail 1.0 OST.mp3" autoplay loop muted></audio>
+  
+  <button id="toggle-audio">🔇 Music Off</button>
+  
+  <video id="bg-video" muted loop playsinline>
+    <source src="Audio&Video\Starrail BG.mp4" type="video/mp4">
+
+  </video>
+  
+<!--CONTENT-->
+  <div class="content">
+  
+  
+     <!--NAVIGATION CONTENT==============================-->
+     <div class="header-bar">
+       <div class="header-left">
+         <a href="..\HoyoVerse Home.html">← Back</a>
+         <h1>Honkai Starrail</h1>
+       </div>
+	   
+	   
+       <nav>
+         <ul>
+		   <li><a href="#Overview">Overview</a></li>
+           <li><a href="#Characters">Characters</a></li>
+           <li><a href="#Gameplay">Gameplay</a></li>
+           <li><a href="#Media">Media</a></li>
+           <li><a href="https://hsr.hoyoverse.com/en-us/home" target = "_blank">Download</a></li>
+         </ul>
+       </nav>
+     </div>
+	 <!--================================================-->
+     
+	 <!--Overview========================================-->
+     <section id="Overview">
+       <h2>Explore the Vast Universe</h2>
+       <div style="margin-top: 30px;">
+         <img src="Audio&Video\Map.png" alt="Teyvat World" style="width: 50%; border-radius: 10px;">
+       </div>
+	   
+       <p>
+         <br><br>Honkai: Star Rail is a turn-based sci-fi RPG developed by HoYoverse. Set in a universe where myth and technology collide, players board the Astral Express, a cosmic train that travels across galaxies and mysterious worlds. As the Trailblazer, you uncover secrets behind powerful entities called Aeons, each representing different ideologies, while forming bonds with a diverse cast of companions.
+                 The game features cinematic storytelling, deep character customization, and a blend of traditional RPG systems with a modern, stylized presentation.
+       </p>
+       
+       <h3><br><br>🌍 Global Impact<br><br></h3>
+       <p>
+         Since its global release in 2023, Honkai: Star Rail has rapidly gained popularity across mobile, PC, and PlayStation platforms. Its high-quality visuals, voice acting, and immersive story arcs have set a new standard for turn-based games. The title has helped expand HoYoverse’s reach into the sci-fi RPG genre and attracted both anime fans and traditional RPG players.
+       </p>
+
+       <ul><br><br>
+         <li>Over 100 million downloads within the first year</li>
+         <li>Featured in multiple "Best Mobile Game" lists in 2023–2024</li>
+         <li>Strong community engagement through fan art, theorycrafting, and lore analysis</li>
+       </ul>
+
+       <h3><br><br>⭐ Player & Critic Reviews<br><br></h3>
+       <blockquote style="font-style: italic; background-color: rgba(255,255,255,0.7); padding: 10px; border-left: 4px solid #ffd700; margin: 20px auto; width: 70%; border-radius: 5px;">
+         ⭐⭐⭐⭐⭐
+         “I didn’t think I’d enjoy a turn-based game this much, but Star Rail blends strategy, humor, and gorgeous animation so well. Every character feels meaningful.” – @EclipseHero
+       </blockquote>
+
+       <blockquote style="font-style: italic; background-color: rgba(255,255,255,0.7); padding: 10px; border-left: 4px solid #87CEEB; margin: 20px auto; width: 70%; border-radius: 5px;">
+         ⭐⭐⭐⭐
+         “Great visuals, deep story, and fun characters. The only downside is some grindy parts later on, but the journey makes up for it.” – @QuantumWitch
+       </blockquote>
+
+       <blockquote style="font-style: italic; background-color: rgba(255,255,255,0.7); padding: 10px; border-left: 4px solid #87CEEB; margin: 20px auto; width: 70%; border-radius: 5px;">
+         ⭐⭐⭐
+         “The game looks great, but I wish there was more free content between updates. Still fun to play casually.” – @TurnBasedNoob         
+       </blockquote>
+
+
+
+     </section>
+
+	 
+	 <!--CHARACTERS======================================-->
+     <section id="Characters">
+       <h2><br><br>Meet the Characters<br><br></h2>
+       <p>The strength of Honkai: Star Rail lies in its unique and memorable characters. Each one is aligned with a Path (combat role) and Element, offering distinct personalities, backgrounds, and combat abilities.<br><br></p>
+
+       <div class="character-grid">
+	   
+         <div class="character-card">
+           <img src="Audio&Video\Asta.png" alt="Asta">
+           <h3>Asta</h3>
+           <p>A fiercely inquisitive and energetic young girl, she is the lead Researcher of Herta Space Station</p>
+         </div>
+		 
+		 <div class="character-card">
+           <img src="Audio&Video\Ruan Mei.png" alt="Ruan Mei">
+           <h3>Ruan Mei</h3>
+           <p>A sweet-tempered and elegant scholar, Member #81 of the Genius Society</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\The Herta.png" alt="The Herta">
+           <h3>The Herta</h3>
+           <p>Esteemed Genius Society #83, Human, female, young, beautiful, attractive</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Arlan.png" alt="Arlan">
+           <h3>Arlan</h3>
+           <p>The inarticulate head of the Herta Space Stations Security Department</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Geppy.png" alt="Gepard">
+           <h3>Gepard</h3>
+           <p>The honorable and upstanding captain of the Silverman Guards who bears the noble Landau family name<p>
+         </div>
+		 
+		 <div class="character-card">
+           <img src="Audio&Video\Seele.png" alt="Seele">
+           <h3>Seele</h3>
+           <p>A spirited and valient member of Wildfire who grew up in the perilous Underworld of Belobog</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Clara.png" alt="Clara">
+           <h3>Clara</h3>
+           <p>A young girl raised by a robot, her perceptiveness and tenacity are far beyond her years</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Bronya.png" alt="Bronya">
+           <h3>Bronya</h3>
+           <p>Heir to the Supreme Guardian of Belobog, she is the young and capable commander of the Silverman Guards</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Himeko.png" alt="Himeko">
+           <h3>Himeko</h3>
+           <p>An adventurous scientist who encountered the Astral Express as a young girl when it got stranded in her home world<p>
+         </div>
+		 
+		 <div class="character-card">
+           <img src="Audio&Video\Welt.png" alt="Welt">
+           <h3>Welt</h3>
+           <p>The wise and experienced former Anti-Entropy Sovereign who inherits the name of the world -- Welt</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Dan Heng.png" alt="Dan Heng">
+           <h3>Dan Heng</h3>
+           <p>A cold and reserved young man who wields a spear known as Cloud-piercer</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\March 7th.png" alt="March 7th">
+           <h3>March 7th</h3>
+           <p>A spirited, quirky girl who is into all the things girls her age should be interested in, for example, taking photos</p>
+         </div>
+
+       </div>
+     </section>
+
+	 
+	 <!--GAMEPLAY========================================-->
+     <section id="Gameplay">
+       <h2><br><br>Gameplay<br><br></h2>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\Combat.png" alt="Combat" class="background-img">
+         <div class="text-box left">
+           <h3>Combat</h3>
+           <p>
+             Turn-Based Combat Each character takes turns based on their speed stat. Combat involves using Basic Attacks, Skills, and powerful Ultimates, which can be triggered even outside of a character's turn for tactical depth.
+           </p>
+         </div>
+       </div>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\Exploration.png" alt="Exploration" class="background-img">
+         <div class="text-box right">
+           <h3>Exploration & Puzzles</h3>
+           <p>
+             Outside combat, players explore vibrant planets, solve environmental puzzles, and take part in events and minigames that expand the lore and rewards.
+           </p>
+         </div>
+       </div>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\Simulated.png" alt="Co-op" class="background-img">
+         <div class="text-box left">
+           <h3>Simulated Universe & Forgotten Hall</h3>
+           <p>
+             Special game modes like Simulated Universe (a roguelike challenge) and Forgotten Hall (a trial tower) add replayability and rewards for strategic mastery.
+           </p>
+         </div>
+       </div>
+     </section>
+
+	 
+	 
+     <section id="Media">
+       <h2>Media<br><br></h2>
+       <div class="SlideShow-Container">
+
+         <div class="NavButtons">
+           <button onclick="prevSlide()">&#10094;</button>
+           <button onclick="nextSlide()">&#10095;</button>
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img1.png" alt= "img1">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img2.png" alt= "img2">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img3.png" alt= "img3">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img4.png" alt= "img4">
+         </div>
+		 
+         <div class="Slides">
+           <img src="Audio&Video\img5.png" alt= "img5">
+         </div>
+
+       </div>
+     </section>
+	   
+	  
+	 <footer>© 2025. All rights reserved.</footer>
+
+  </div>
+
+  <script>
+///////////////////////////////////////////////////////////////////////////////////
+    // auto plays background video when user opens page
+    const video = document.getElementById("bg-video");
+    
+	
+	
+    window.addEventListener("load", () => {
+
+      video.play().catch(err => {
+        console.log("Autoplay failed:", err);
+	  });
+	  
+    });
+	
+	
+	// Button audio function
+    const audio = document.getElementById("BGAudio");
+    const toggleBtn = document.getElementById("toggle-audio");
+
+    // change button value  (if muted or not muted)
+    toggleBtn.addEventListener("click", () => {
+      audio.muted = !audio.muted;
+      toggleBtn.textContent = audio.muted ? "🔇 Music Off" : "🔊 Music On";
+  
+    // Play Audio once button click
+      audio.play().catch(err => {
+        console.log("Audio play failed:", err);
+      });
+    });
+	
+	 let slides = document.querySelectorAll('.Slides'); 
+     let currentSlide = 0;
+     let slideInterval = setInterval(nextSlide, 5000)
+
+
+     //Shows the specific slide needed and hide the others
+     function showSlide(index) {
+       slides.forEach((slide, i) => {
+         slide.style.display = (i === index) ? 'block' : 'none';
+       });
+     }
+     
+	 //Resets the interval of going to the next slide when button click
+	 function resetInterval() {
+	     
+	     clearInterval(slideInterval);
+		 slideInterval = setInterval(nextSlide, 5000)
+	 
+	 }
+
+	 //Function for buttons
+	 function prevSlide() {
+	     
+		 currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+         showSlide(currentSlide);
+		 resetInterval();
+	 
+	 }
+	 
+	 function nextSlide() {
+	 
+	     currentSlide = (currentSlide + 1) % slides.length;
+         showSlide(currentSlide);
+		 resetInterval();
+	 
+	 }
+	 
+	 
+
+     //Show The Slides
+     showSlide(currentSlide);
+	
+	
+///////////////////////////////////////////////////////////////////////////////////
+  </script>
+
+</body>
+</html>
