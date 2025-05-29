@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hoyoverse</title>
+
+  <style>
+      * {	
+	     margin: 0;
+		 padding: 0;
+
+	  
+	  }
+
+      .SlideShow-Container {
+
+         position: relative;
+         margin: auto;
+		 height: 100vh;
+		 overflow: hidden;
+
+
+	  }
+	  
+
+      .Slides  {
+
+         display:none;  /*Hides the Slides*/
+	     width: 100%;
+         height: 100%;
+
+	
+
+	  
+	  }
+
+      .Slides img  {
+         
+		 width: 100%;
+         height: 100%;
+		 object-fit: cover;
+	  
+	  }
+	  
+       /*CSS for nav buttons for slide*/
+	  .NavButtons button  {
+		  
+         position: absolute;
+	     top: 45%; /*centers the button near the middle*/
+		 padding: 0.5%;
+		 font-size: 300%;
+		 background-color: rgba(0,0,0,0.5); /*Sets BG color and abit of transparency*/
+		 color: #ffffff;
+		 border: none;
+         z-index: 5;
+		 cursor: pointer;
+       }
+      .NavButtons button:first-of-type  {
+		  
+         left:  0%;  
+       }
+      .NavButtons button:last-of-type  {
+		  
+         right: 0%;  
+       }
+      .NavButtons button:hover  {
+		  
+         background-color: rgba(255,255,255,0.4); /*Sets BG color and abit of transparency*/
+         color: #000000;		 
+       }
+	   
+	   /*Content inside the slide (text & buttons)*/
+	   .SlideContent  {
+	     
+		 position: absolute;
+		 left: 7%;
+	     top: 20%;
+		 width: 100%;
+         text-shadow: 5px 5px 2px black;
+		 font-size: 200%;
+		 color: #FFFFFF;
+         
+	   }
+	  /*Adds space between the heading above paragraph*/
+      .Slides p, h1  {
+
+         margin-top: 25px;
+		 font-family: Arial black;
+
+	
+	  }
+	   
+	   
+	   /*Button that will lead to a new page*/
+	   .SlideContent button  {
+	   
+	     font-size: 120%;
+		 color: #FFFFFF;
+		 text-align: center;
+		 padding: 0.5%;
+		 margin-top: 5%;
+		 border: none;
+		 border-radius: 20px;
+		 background-color: rgba(0,0,0,0.5); /*Sets BG color and abit of transparency*/
+		 width: 15%;
+		 font-family: arial black;
+		 cursor: pointer;
+	   
+	   }
+	   .SlideContent button:hover   {
+
+		 background-color: rgba(255,255,255,0.4); /*Sets BG color and abit of transparency*/   
+		 color: #000000;
+	   
+	   }
+
+
+  </style>
+
+</head>
+
+
+  <body>
+     <div class = "SlideShow-Container">
+	 
+	    <div class = "NavButtons">
+	       <button onClick = "prevSlide()">&#10094;</button>
+	       <button onClick = "nextSlide()">&#10095;</button>
+	    </div>       
+	   
+	   
+	    <div class ="Slides">
+		<img src = "HoyoVerse Files\Genshin BG Home.jpeg" alt = "Genshin Impact">
+		
+		     <div class = "SlideContent">
+			 
+			     <h1>Genshin Impact</h1>
+				 <p>Version 5.5 <br> "The day of the Flames Return" <br>Now Here!</p>
+				 
+				 <a href = "Genshin\GenshinHome.html">
+				     <button>More</button>
+				 </a>
+			 
+			 
+			 
+			 
+			 
+			 </div>
+		
+		
+		</div>
+		
+		
+		
+		<div class ="Slides">
+		<img src = "HoyoVerse Files\StarrailBGhome.jpg" alt = "Honkai Starrail">
+		
+		     <div class = "SlideContent">
+			 
+			     <h1>Honkai Starrail</h1>
+                 <p>Version 3.2 <br> "Through the Petals in the <br>Land of Repose" Now Online</p>
+				 
+				 <a href = "Starrail\Starrail Home.html">
+                     <button>More</button>
+                 </a>				 
+			 
+			 
+			 
+			 
+			 
+			 </div>
+		
+		
+		</div>
+		
+		
+		
+		<div class ="Slides">
+		<img src = "HoyoVerse Files\ZZZ BG Home.png" alt = "Zenless Zone Zero">
+		
+		     <div class = "SlideContent">
+			 
+			     <h1>Zenless Zone Zero</h1>
+				 <p>Version 1.7 <br>[Bury Your Tears <br>With The Past] Is Here!</p>
+				 
+				 <a href = "ZZZ\ZZZ Home.html">
+				     <button>More</button>
+				 </a>
+			 
+			 
+			 
+			 
+			 
+			 </div>
+		
+		
+		</div>
+		
+		
+		
+		<div class ="Slides">
+		<img src = "HoyoVerse Files\HonkaiImpactBGHome.jpg" alt = "Honkai Impact 3rd">
+		
+		     <div class = "SlideContent">
+			 
+			     <h1>Honkai Impact 3rd</h1>
+				 <p>V8.2 <br>[Roving Among Clouds]<br> Now Available!</p>
+				 
+				 <a href = "Honkai Impact 3rd\Honkai Impact Home.html">
+				     <button>More</button>
+				 </a>
+			 
+			 
+			 
+			 
+			 
+			 </div>
+		
+		
+		</div>
+		
+		
+
+	 
+	 </div>
+  
+     
+	 
+	 <script>
+	 let slides = document.querySelectorAll('.Slides'); 
+     let currentSlide = 0;
+     let slideInterval = setInterval(nextSlide, 5000)
+
+
+     //Shows the specific slide needed and hide the others
+     function showSlide(index) {
+       slides.forEach((slide, i) => {
+         slide.style.display = (i === index) ? 'block' : 'none';
+       });
+     }
+     
+	 //Resets the interval of going to the next slide when button click
+	 function resetInterval() {
+	     
+	     clearInterval(slideInterval);
+		 slideInterval = setInterval(nextSlide, 5000)
+	 
+	 }
+
+	 //Function for buttons
+	 function prevSlide() {
+	     
+		 currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+         showSlide(currentSlide);
+		 resetInterval();
+	 
+	 }
+	 
+	 function nextSlide() {
+	 
+	     currentSlide = (currentSlide + 1) % slides.length;
+         showSlide(currentSlide);
+		 resetInterval();
+	 
+	 }
+	 
+	 
+
+     //Show The Slides
+     showSlide(currentSlide);
+
+
+	 
+	 </script>
+  </body>
+
+
+</html>
