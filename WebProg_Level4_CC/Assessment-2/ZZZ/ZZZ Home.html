@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Zenless Zone Zero</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+
+      background-color: rgba(0,0,0,0.5);
+      height: 100;
+
+	  font-size: 120%;
+	  top: 0;
+
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+	
+	#toggle-audio {
+	  position: fixed;
+      bottom: 6%;
+      right: 20px;
+      z-index: 10;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;    
+	}
+	
+/*MAIN CONTENT STYLE------------------------------------------*/
+
+    .content {
+
+      position: relative;
+      z-index: 1;
+      color: white;
+      font-family: Arial black;
+      text-align: center;
+	  padding-top: 8%;
+
+	}
+	
+	h2  {
+	
+	  
+	 font-size: 250%;
+	 
+	}
+	
+	/*OVERVIEW CONTENT STYLE*/
+	#Overview  {
+	  
+	  width: 60%;
+	  margin: auto;
+
+	  
+	}
+
+	#Overview p {
+	  
+	  text-align: Justify;
+
+	}
+	
+	ul  {
+	
+	  text-align: left;
+	
+	}
+	/*CHARACTERS CONTENT STYLE*/
+	
+	#Characters  {
+
+	  width: 70%;
+	  margin: auto;
+	
+	}
+	
+    .character-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .character-card {
+      background: rgba(243, 228, 196, 0.8);
+      border-radius: 10px;
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+	
+    .character-card h3 {
+	
+	padding-bottom: 20px;
+
+    }
+
+    .character-card p {
+	
+	font-size: 65%;
+
+    }
+	
+    .character-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+	/*GAMEPLAY CONTENT STYLE*/
+    #Gameplay {
+      padding: 60px 15%;
+
+    }
+
+    #Gameplay h2 {
+      text-align: center;
+
+    }
+
+    .gameplay-block {
+      position: relative;
+      margin-bottom: 80px;
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .background-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .text-box {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40%;
+      padding: 25px;
+      background: rgba(243, 228, 196, 0.8);
+      color: #000000;
+      border: 2px solid #c9b189;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      font-family: 'Georgia', serif;
+    }
+
+    .text-box.left {
+      left: 30px;
+    }
+
+    .text-box.right {
+      right: 30px;
+      text-align: right;
+    }
+
+	/*MEDIA CONTENT STYLE*/
+      .SlideShow-Container {
+
+         position: relative;
+         margin: auto;
+		 overflow: hidden;
+
+
+	  }
+	  
+
+      .Slides  {
+
+         display:none;  /*Hides the Slides*/
+	     width: 100%;
+         height: 100%;
+
+	
+
+	  
+	  }
+
+      .Slides img  {
+         
+		 width: 50%;
+         height: 50%;
+		 object-fit: cover;
+		 margin-bottom: 6%;
+		 border-radius: 20px;
+	  
+	  }
+	  
+       /*CSS for nav buttons for slide*/
+	  .NavButtons button  {
+		  
+         position: absolute;
+	     top: 36%; /*centers the button near the middle*/
+		 padding: 0.5%;
+		 font-size: 300%;
+		 background-color: rgba(0,0,0,0.5); /*Sets BG color and abit of transparency*/
+		 color: #ffffff;
+		 border: none;
+         z-index: 5;
+		 cursor: pointer;
+       }
+      .NavButtons button:first-of-type  {
+		  
+         left:  12%;  
+       }
+      .NavButtons button:last-of-type  {
+		  
+         right: 12%;  
+       }
+      .NavButtons button:hover  {
+		  
+         background-color: rgba(255,255,255,0.4); /*Sets BG color and abit of transparency*/
+         color: #000000;		 
+       }
+	   
+
+/*NAVIGATION------------------------------------------*/
+
+    nav ul {
+        display: flex; /*Makes it flow in one line and not break*/
+	    justify-content: flex-end; /*Push push Ul to the left*/
+        list-style: none; /*Gets rid of the list-style of the Ul*/
+        padding: 0%;
+        margin: 0%;
+	    font-size: 25px;
+	
+    }
+	
+    nav ul li {
+        padding: 15px;
+		margin-right: 30px;
+    }
+
+    nav ul li a {
+        color: #ffffff;
+        text-decoration: none; /*Gets rid of underline*/
+		
+    }
+
+
+    /*Makes a colored border when hovering over nav bar*/
+    nav ul li a:hover {
+        background-color: rgba(138, 182, 214, 0.6);
+		color: 	#ffd700;
+	    padding: 5px;
+        border-radius: 5px;
+		transition: 0.2s ease;
+
+    }
+	
+    .header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(40, 40, 40, 0.6);
+        padding: 10px 20px;
+        font-size: 30px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 5;
+    }
+	
+    /*Game name style------------------------------------------*/
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 30px; /*Gap between button and game name*/
+    }
+
+    .header-left h1 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 35px;
+        font-family: Arial Black;
+    }
+	
+    /*back button style------------------------------------------*/
+    .header-left a {
+        color: white;
+        text-decoration: none;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid white;
+        font-size: 20px;
+    }
+    
+    .header-left a:hover {
+        background-color: rgba(138, 182, 214, 0.7);
+        color: #ffd700;
+        transition: 0.2s ease;
+    }
+	
+/*FOOTER------------------------------------------*/
+
+    footer  {
+        
+		font-size: 15px;
+        position: fixed;
+		bottom: 0;
+		width: 100%;
+	    background-color: rgba(40, 40, 40, 0.6);
+        color: #ffffff;
+		padding: 0.5%;
+		font-family: sans-serif;
+	
+	}
+  </style>
+</head>
+<body>
+
+  <audio id = "BGAudio" src = "Audio&Video\[Zenless Zone Zero OST] 60 Daily - Leisure.mp3" autoplay loop muted></audio>
+  
+  <button id="toggle-audio">🔇 Music Off</button>
+  
+  <video id="bg-video" muted loop playsinline>
+    <source src="Audio&Video\ZZZ BG.mp4" type="video/mp4">
+
+  </video>
+  
+<!--CONTENT-->
+  <div class="content">
+  
+  
+     <!--NAVIGATION CONTENT==============================-->
+     <div class="header-bar">
+       <div class="header-left">
+         <a href="..\HoyoVerse Home.html">← Back</a>
+         <h1>Zenless Zone Zero</h1>
+       </div>
+	   
+	   
+       <nav>
+         <ul>
+		   <li><a href="#Overview">Overview</a></li>
+           <li><a href="#Characters">Characters</a></li>
+           <li><a href="#Gameplay">Gameplay</a></li>
+           <li><a href="#Media">Media</a></li>
+           <li><a href="https://zenless.hoyoverse.com/en-us/main?utm_source=web&utm_medium=landingpage&utm_campaign=homebtn" target = "_blank">Download</a></li>
+         </ul>
+       </nav>
+     </div>
+	 <!--================================================-->
+     
+	 <!--Overview========================================-->
+     <section id="Overview">
+       <h2>Explore New Eridu</h2>
+       <div style="margin-top: 30px;">
+         <img src="Audio&Video\NewEridu.png" alt="New Eridu" style="width: 50%; border-radius: 10px;">
+       </div>
+	   
+       <p>
+         <br><br>Zenless Zone Zero is a free-to-play action RPG developed by HoYoverse, the creators of Genshin Impact and Honkai: Star Rail. Released on July 4, 2024, for PlayStation 5, PC, iOS, and Android, with an Xbox Series X|S version slated for June 2025, ZZZ transports players to New Eridu, the last bastion of civilization in a world ravaged by supernatural disasters known as "Hollows." These anomalies spawn entities called "Ethereals," posing threats that players, acting as "Proxies," must navigate and combat.
+       </p>
+       
+       <h3><br><br>🌍 Global Impact<br><br></h3>
+       <p>
+         Upon release, ZZZ achieved significant commercial success, amassing over 50 million downloads within three days and generating more than $100 million in its first month. Critics lauded its stylish art direction, engaging combat, and immersive world-building. However, some noted that certain gameplay aspects, like the Hollow exploration mechanics, could become repetitive over time.
+       </p>
+
+       <ul><br><br>
+         <li>⚡ Over 50 million downloads globally within the first 3 days of launch</li>
+         <li>🌐 Top trending game on iOS and Android app stores in over 30 countries</li>
+         <li>🕹️ Praised for next-gen action combat and stylish presentation by major gaming outlets</li>
+         <li>💰 Earned over $100 million in revenue within the first month</li>
+       </ul>
+
+       <h3><br><br>⭐ Player & Critic Reviews<br><br></h3>
+       <blockquote style="font-style: italic; background-color: rgba(0,0,0,0.7); padding: 10px; border-left: 4px solid #ffd700; margin: 20px auto; width: 70%; border-radius: 5px;">
+         "This game is absolutely stunning — the combat feels fluid, and the art style is top-tier. It’s like playing an anime action movie."
+          ★ ★ ★ ★ ★ – User: PhantomEdge
+       </blockquote>
+
+       <blockquote style="font-style: italic; background-color: rgba(0,0,0,0.7); padding: 10px; border-left: 4px solid #87CEEB; margin: 20px auto; width: 70%; border-radius: 5px;">
+         "ZZZ brings a fresh vibe to HoYoverse games. Love the urban setting and the music. It’s so different from Genshin, in a good way."
+          ★ ★ ★ ★ ☆ – User: Wavelength
+       </blockquote>
+	   
+       <blockquote style="font-style: italic; background-color: rgba(0,0,0,0.7); padding: 10px; border-left: 4px solid #ffd700; margin: 20px auto; width: 70%; border-radius: 5px;">
+         "Great combat and atmosphere. Wish the stamina system was a bit more forgiving, but overall very impressed."
+          ★ ★ ★ ☆ ☆ – User: PixelWave
+       </blockquote>
+
+
+     </section>
+
+	 
+	 <!--CHARACTERS======================================-->
+     <section id="Characters">
+       <h2><br><br>Meet the Characters<br><br></h2>
+       <p>Zenless Zone Zero features a vibrant cast of characters, each belonging to distinct factions with unique abilities, personalities, and backstories.<br><br></p>
+
+       <div class="character-grid">
+	   
+         <div class="character-card">
+           <img src="Audio&Video\Nekomiya Mana.png" alt="Nekomiya Mana">
+           <h3>Nekomiya Mana</h3>
+           <p>Spirited and mischievous, she likes to play tricks on others, Your wallet is her wallet</p>
+         </div>
+		 
+		 <div class="character-card">
+           <img src="Audio&Video\Billy.png" alt="Billy Kid">
+           <h3>Billy Kid</h3>
+           <p>A handsome cyborg with a casual and carefree personality</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Anby.png" alt="Anby Demara">
+           <h3>Anby Demara</h3>
+           <p>A mysterious young girl who never talks about her past, almost as if you did'nt had one</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Nicole.png" alt="Nicole Demara">
+           <h3>Nicole Demara</h3>
+           <p>The leader of the Cunning Hares, who accept all kinds of Hollow-related commissions</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Rina.png" alt="Alexandrina">
+           <h3>Alexandrina</h3>
+           <p>Are you the new master? Rina from Victoria Housekeeping, at your service."</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Ellen.png" alt="Ellen Joe">
+           <h3>Ellen Joe</h3>
+           <p>"Let's end it here. I'm tired."
+"Just a moment, let me check... there's still... two questions left!"
+"...zzz..."
+"Miss Ellen? Miss Ellen? She's already asleep..."</p>
+         </div>
+		 
+		 <div class="character-card">
+           <img src="Audio&Video\Corin.png" alt="Corin Wickes">
+           <h3>Corin Wickes</h3>
+           <p>Domestic work or not, leave everything to her!
+(Oh, uhh? B-but I'm not that good!)
+
+She's obedient, diligent and responsible, and not afraid of a little hard work!
+(One moment please! That's really not me!)</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Lycaon.png" alt="Von Lycaon">
+           <h3>Von Lycaon</h3>
+           <p>Can resolve any matter. The most trusted of attendants, and solid support for any team.</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Harumasa.png" alt="Asaba Harumasa">
+           <h3>Asaba Harumasa</h3>
+           <p>"He is much stronger than he appears, like spicy chicken noodle soup disguised as a cup of half-sweet teamilk."
+-Hoshimi Miyabi</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Yanagi.png" alt="Tsukishiro Yanagi">
+           <h3>Tsukishiro Yanagi</h3>
+           <p>"I really can't deal with Tsukishiro. Does she not have the phrase 'turn a blind eye' in her dictionary?"
+-Asaba Harumasa</p>
+         </div>
+		 
+		  <div class="character-card">
+           <img src="Audio&Video\Miyabi.png" alt="Hoshimi Miyabi">
+           <h3>Hoshimi Miyabi</h3>
+           <p>"Phew, luckily I got a good boss. This job might be worthwhile after all."
+-Asaba Harumasa</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Soukaku.png" alt="Soukaku">
+           <h3>Soukaku</h3>
+           <p>Soukaku, Deceptively Strong in Combat
+Not only a member of Section 6, but also one of its "assets." Enemies who underestimate her have a tendency to vanish from existence. Totally.</p>
+         </div>
+
+       </div>
+     </section>
+
+	 
+	 <!--GAMEPLAY========================================-->
+     <section id="Gameplay">
+       <h2><br><br>Gameplay<br><br></h2>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\Combat.png" alt="Combat" class="background-img">
+         <div class="text-box left">
+           <h3>Combat</h3>
+           <p>
+             ZZZ features dynamic real-time battles where players can chain together flashy combos, dodge with precise timing, and switch between characters mid-fight for devastating follow-up attacks. Each character has a unique combat style, elemental attribute, and special ability, encouraging team synergy and tactical play.
+           </p>
+         </div>
+       </div>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\Exploration.png" alt="Exploration" class="background-img">
+         <div class="text-box right">
+           <h3>Hollow Exploration</h3>
+           <p>
+             The game takes place in an alternate dimension called the Hollow — unstable zones full of Etheric energy, enemies, and hidden lore. Players navigate these zones through roguelike-inspired map segments, selecting encounters, events, and upgrades as they delve deeper.
+           </p>
+         </div>
+       </div>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\Upgrade.png" alt="Co-op" class="background-img">
+         <div class="text-box left">
+           <h3>Upgrade & Cusomization</h3>
+           <p>
+             Agents can be enhanced through leveling up, equipping W-Engines (weapons), and installing Drive Discs (passive boosts). This allows players to personalize their playstyle and build teams tailored to their preferences.
+           </p>
+         </div>
+       </div>
+     </section>
+
+	 
+	 
+     <section id="Media">
+       <h2>Media<br><br></h2>
+       <div class="SlideShow-Container">
+
+         <div class="NavButtons">
+           <button onclick="prevSlide()">&#10094;</button>
+           <button onclick="nextSlide()">&#10095;</button>
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img1.png" alt= "img1">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img2.png" alt= "img2">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img3.png" alt= "img3">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img4.png" alt= "img4">
+         </div>
+		 
+         <div class="Slides">
+           <img src="Audio&Video\img5.png" alt= "img5">
+         </div>
+
+       </div>
+     </section>
+	   
+	  
+	 <footer>© 2025. All rights reserved.</footer>
+
+  </div>
+
+  <script>
+///////////////////////////////////////////////////////////////////////////////////
+    // auto plays background video when user opens page
+    const video = document.getElementById("bg-video");
+    
+	
+	
+    window.addEventListener("load", () => {
+
+      video.play().catch(err => {
+        console.log("Autoplay failed:", err);
+	  });
+	  
+    });
+	
+	
+	// Button audio function
+    const audio = document.getElementById("BGAudio");
+    const toggleBtn = document.getElementById("toggle-audio");
+
+    // change button value  (if muted or not muted)
+    toggleBtn.addEventListener("click", () => {
+      audio.muted = !audio.muted;
+      toggleBtn.textContent = audio.muted ? "🔇 Music Off" : "🔊 Music On";
+  
+    // Play Audio once button click
+      audio.play().catch(err => {
+        console.log("Audio play failed:", err);
+      });
+    });
+	
+	 let slides = document.querySelectorAll('.Slides'); 
+     let currentSlide = 0;
+     let slideInterval = setInterval(nextSlide, 5000)
+
+
+     //Shows the specific slide needed and hide the others
+     function showSlide(index) {
+       slides.forEach((slide, i) => {
+         slide.style.display = (i === index) ? 'block' : 'none';
+       });
+     }
+     
+	 //Resets the interval of going to the next slide when button click
+	 function resetInterval() {
+	     
+	     clearInterval(slideInterval);
+		 slideInterval = setInterval(nextSlide, 5000)
+	 
+	 }
+
+	 //Function for buttons
+	 function prevSlide() {
+	     
+		 currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+         showSlide(currentSlide);
+		 resetInterval();
+	 
+	 }
+	 
+	 function nextSlide() {
+	 
+	     currentSlide = (currentSlide + 1) % slides.length;
+         showSlide(currentSlide);
+		 resetInterval();
+	 
+	 }
+	 
+	 
+
+     //Show The Slides
+     showSlide(currentSlide);
+	
+	
+///////////////////////////////////////////////////////////////////////////////////
+  </script>
+
+</body>
+</html>
+</html>
