@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Genshin Impact</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+
+      background-color: rgba(255,255,255,0.5);
+      height: 100;
+
+	  font-size: 120%;
+	  top: 0;
+
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+    }
+	
+	#toggle-audio {
+	  position: fixed;
+      bottom: 6%;
+      right: 20px;
+      z-index: 10;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;    
+	}
+	
+/*MAIN CONTENT STYLE------------------------------------------*/
+
+    .content {
+
+      position: relative;
+      z-index: 1;
+      color: black;
+      font-family: Arial black;
+      text-align: center;
+	  padding-top: 8%;
+
+	}
+	
+	h2  {
+	
+	  
+	 font-size: 250%;
+	 
+	}
+	
+	/*OVERVIEW CONTENT STYLE*/
+	#Overview  {
+	  
+	  width: 60%;
+	  margin: auto;
+
+	  
+	}
+
+	#Overview p {
+	  
+	  text-align: Justify;
+
+	}
+	
+	ul  {
+	
+	  text-align: left;
+	
+	}
+	/*CHARACTERS CONTENT STYLE*/
+	
+	#Characters  {
+
+	  width: 70%;
+	  margin: auto;
+	
+	}
+	
+    .character-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .character-card {
+      background: rgba(243, 228, 196, 0.8);
+      border-radius: 10px;
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+	
+    .character-card h3 {
+	
+	padding-bottom: 20px;
+
+    }
+
+    .character-card p {
+	
+	font-size: 65%;
+
+    }
+	
+    .character-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+	/*GAMEPLAY CONTENT STYLE*/
+    #Gameplay {
+      padding: 60px 15%;
+
+    }
+
+    #Gameplay h2 {
+      text-align: center;
+
+    }
+
+    .gameplay-block {
+      position: relative;
+      margin-bottom: 80px;
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .background-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .text-box {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40%;
+      padding: 25px;
+      background: rgba(243, 228, 196, 0.8);
+      color: #000000;
+      border: 2px solid #c9b189;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      font-family: 'Georgia', serif;
+    }
+
+    .text-box.left {
+      left: 30px;
+    }
+
+    .text-box.right {
+      right: 30px;
+      text-align: right;
+    }
+
+	/*MEDIA CONTENT STYLE*/
+      .SlideShow-Container {
+
+         position: relative;
+         margin: auto;
+		 overflow: hidden;
+
+
+	  }
+	  
+
+      .Slides  {
+
+         display:none;  /*Hides the Slides*/
+	     width: 100%;
+         height: 100%;
+
+	
+
+	  
+	  }
+
+      .Slides img  {
+         
+		 width: 50%;
+         height: 50%;
+		 object-fit: cover;
+		 margin-bottom: 6%;
+		 border-radius: 20px;
+	  
+	  }
+	  
+       /*CSS for nav buttons for slide*/
+	  .NavButtons button  {
+		  
+         position: absolute;
+	     top: 36%; /*centers the button near the middle*/
+		 padding: 0.5%;
+		 font-size: 300%;
+		 background-color: rgba(0,0,0,0.5); /*Sets BG color and abit of transparency*/
+		 color: #ffffff;
+		 border: none;
+         z-index: 5;
+		 cursor: pointer;
+       }
+      .NavButtons button:first-of-type  {
+		  
+         left:  12%;  
+       }
+      .NavButtons button:last-of-type  {
+		  
+         right: 12%;  
+       }
+      .NavButtons button:hover  {
+		  
+         background-color: rgba(255,255,255,0.4); /*Sets BG color and abit of transparency*/
+         color: #000000;		 
+       }
+	   
+
+/*NAVIGATION------------------------------------------*/
+
+    nav ul {
+        display: flex; /*Makes it flow in one line and not break*/
+	    justify-content: flex-end; /*Push push Ul to the left*/
+        list-style: none; /*Gets rid of the list-style of the Ul*/
+        padding: 0%;
+        margin: 0%;
+	    font-size: 25px;
+	
+    }
+	
+    nav ul li {
+        padding: 15px;
+		margin-right: 30px;
+    }
+
+    nav ul li a {
+        color: #ffffff;
+        text-decoration: none; /*Gets rid of underline*/
+		
+    }
+
+
+    /*Makes a colored border when hovering over nav bar*/
+    nav ul li a:hover {
+        background-color: rgba(138, 182, 214, 0.6);
+		color: 	#ffd700;
+	    padding: 5px;
+        border-radius: 5px;
+		transition: 0.2s ease;
+
+    }
+	
+    .header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(40, 40, 40, 0.6);
+        padding: 10px 20px;
+        font-size: 30px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 5;
+    }
+	
+    /*Game name style------------------------------------------*/
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 30px; /*Gap between button and game name*/
+    }
+
+    .header-left h1 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 35px;
+        font-family: Arial Black;
+    }
+	
+    /*back button style------------------------------------------*/
+    .header-left a {
+        color: white;
+        text-decoration: none;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid white;
+        font-size: 20px;
+    }
+    
+    .header-left a:hover {
+        background-color: rgba(138, 182, 214, 0.7);
+        color: #ffd700;
+        transition: 0.2s ease;
+    }
+	
+/*FOOTER------------------------------------------*/
+
+    footer  {
+        
+		font-size: 15px;
+        position: fixed;
+		bottom: 0;
+		width: 100%;
+	    background-color: rgba(40, 40, 40, 0.6);
+        color: #ffffff;
+		padding: 0.5%;
+		font-family: sans-serif;
+	
+	}
+  </style>
+</head>
+<body>
+
+  <audio id = "BGAudio" src = "Audio&Video\Genshin Impact Main Theme.mp3" autoplay loop muted></audio>
+  
+  <button id="toggle-audio">🔇 Music Off</button>
+  
+  <video id="bg-video" muted loop playsinline>
+    <source src="Audio&Video\Genshin BG.mp4" type="video/mp4">
+
+  </video>
+  
+<!--CONTENT-->
+  <div class="content">
+  
+  
+     <!--NAVIGATION CONTENT==============================-->
+     <div class="header-bar">
+       <div class="header-left">
+         <a href="..\HoyoVerse Home.html">← Back</a>
+         <h1>Genshin Impact</h1>
+       </div>
+	   
+	   
+       <nav>
+         <ul>
+		   <li><a href="#Overview">Overview</a></li>
+           <li><a href="#Characters">Characters</a></li>
+           <li><a href="#Gameplay">Gameplay</a></li>
+           <li><a href="#Media">Media</a></li>
+           <li><a href="https://genshin.hoyoverse.com/en/home" target = "_blank">Download</a></li>
+         </ul>
+       </nav>
+     </div>
+	 <!--================================================-->
+     
+	 <!--Overview========================================-->
+     <section id="Overview">
+       <h2>Explore the World of Teyvat</h2>
+       <div style="margin-top: 30px;">
+         <img src="Audio&Video\genshin Map.webp" alt="Teyvat World" style="width: 50%; border-radius: 10px;">
+       </div>
+	   
+       <p>
+         <br><br>Genshin Impact is an open-world action RPG developed by HoYoverse. Released in 2020, it invites players into the breathtaking world of Teyvat, where they journey as the Traveler to uncover lost siblings, ancient secrets, and elemental mysteries. The game blends fast-paced combat with elemental magic and deep lore.
+       </p>
+       
+       <h3><br><br>🌍 Global Impact<br><br></h3>
+       <p>
+         Genshin Impact quickly became a global sensation, gaining over 20 million downloads within its first week. It redefined mobile and free-to-play RPG expectations with console-quality graphics, regular content updates, and deep character development.
+       </p>
+
+       <ul><br><br>
+         <li>⚔️ Revolutionized gacha gaming on mobile and console</li>
+         <li>🌐 Massive international player base</li>
+         <li>🎮 Winner of “Best Mobile Game” – The Game Awards 2021</li>
+         <li>💰 Generated over $3 billion globally in its first two years</li>
+       </ul>
+
+       <h3><br><br>⭐ Player & Critic Reviews<br><br></h3>
+       <blockquote style="font-style: italic; background-color: rgba(255,255,255,0.7); padding: 10px; border-left: 4px solid #ffd700; margin: 20px auto; width: 70%; border-radius: 5px;">
+         “A gorgeous open-world experience with satisfying combat and constant content updates. Genshin Impact feels like a gift that keeps on giving.” – IGN
+       </blockquote>
+
+       <blockquote style="font-style: italic; background-color: rgba(255,255,255,0.7); padding: 10px; border-left: 4px solid #87CEEB; margin: 20px auto; width: 70%; border-radius: 5px;">
+         “Incredible attention to detail, voice acting, and music. The world of Teyvat feels alive.” – Metacritic User
+       </blockquote>
+
+
+     </section>
+
+	 
+	 <!--CHARACTERS======================================-->
+     <section id="Characters">
+       <h2><br><br>Meet the Characters<br><br></h2>
+       <p>Genshin Impact features a diverse cast, each with unique elements, weapons, and stories. Here are some of the most iconic characters<br><br></p>
+
+       <div class="character-grid">
+	   
+         <div class="character-card">
+           <img src="Audio&Video\Jean.png" alt="Jean">
+           <h3>Jean</h3>
+           <p>The Acting Grand Master of the Knights of Favonius, devoted to maintaining peace in Mondstadt</p>
+         </div>
+		 
+		 <div class="character-card">
+           <img src="Audio&Video\Fischl.png" alt="Fischl">
+           <h3>Fischl</h3>
+           <p>A mysterious girl who calls herself "Prinzessin der Verurteilung" and travels with the night raven named Oz</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Diluc.png" alt="Diluc">
+           <h3>Diluc</h3>
+           <p>A nobleman of Mondstadt who wields Pyro with a greatsword.</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Venti.png" alt="Venti">
+           <h3>Venti</h3>
+           <p>A carefree bard of Mondstadt who is actually Barbatos, the Anemo Archon in mortal form</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Beidou.png" alt="Beidou">
+           <h3>Beidou</h3>
+           <p>The bold and free-spirited captain of The Crux fleet, known for her Electro claymore attacks</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Ningguang.png" alt="Ningguang">
+           <h3>Ningguang</h3>
+           <p>The Tianquan of the Liyue Qixing, a strategic and wealthy Geo user who values balance and ambition</p>
+         </div>
+		 
+		 <div class="character-card">
+           <img src="Audio&Video\Xianyun.png" alt="Xianyun">
+           <h3>Xianyun</h3>
+           <p>A mysterious women who has just move to Liyue Harbor and claims to be reserved, quiet, and socially inept</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Zhongli.png" alt="Zhongli">
+           <h3>Zhongli</h3>
+           <p>The Geo Archon of Liyue in mortal form, a wise consultant with immense knowledge and poise</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Kokomi.png" alt="Sangonomiya Kokomi">
+           <h3>Kokomi</h3>
+           <p>The tactical leader of Watatsumi Island, a Hydro catalyst user known for her healing prowess</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Ayaka.png" alt="Kamisato Ayaka">
+           <h3>Kamisato Ayaka</h3>
+           <p>The elegant and dutiful Cryo swordswoman from the Yashiro Commission in Inazuma</p>
+         </div>
+		 
+		  <div class="character-card">
+           <img src="Audio&Video\Sara.png" alt="Sara">
+           <h3>Kujou Sara</h3>
+           <p>Leader of the Tenryou Commission's forces. A charismatic woman who acts as swiftly as a storm wind and always honors her word</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Raiden Shogun.png" alt="Raiden Shogun">
+           <h3>Raiden Shogun</h3>
+           <p>The Electro Archon of Inazuma, seeking eternity through control and order</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Nilou.png" alt="Nilou">
+           <h3>Nilou</h3>
+           <p>A graceful Hydro dancer from Sumeru, who channels the art of dance into elemental combat</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Alhaitham.png" alt="Alhaitham">
+           <h3>Alhaitham</h3>
+           <p>The current scribe of the sumeru akademiya, a man endowed with extraodinary intelligence and talent.</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Wanderer.png" alt="Wanderer">
+           <h3>Wanderer</h3>
+           <p>Once known as Scaramouche, he now travels freely with Anemo powers and a conflicted past</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Nahida.png" alt="Nahida">
+           <h3>Nahida</h3>
+           <p>The Dendro Archon of Sumeru, childlike in form but wise beyond her years</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Charlotte.png" alt="Charlotte">
+           <h3>Charlotte</h3>
+           <p>Indefatigable reporter of The Steambird, constantly on the hunt for the "truth"</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\The Knave.png" alt="Arlecchino">
+           <h3>Arlecchino</h3>
+           <p>"The Knave," Fourth of the Fatui Harbingers. Revered as "Father" by the children of the House of the Hearth</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Neuvillette.png" alt="Neuvillette">
+           <h3>Neuvillette</h3>
+           <p>The Chief Justice of Fontaine, a calm and commanding figure who serves Hydro's ideals of justice</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Furina.png" alt="Furina">
+           <h3>Furina</h3>
+           <p>The flamboyant Hydro Archon of Fontaine, dramatic in nature yet deeply thoughtful beneath the surface</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Citlali.png" alt="Citlali">
+           <h3>Citlali</h3>
+           <p>A legendary shamen from the Masters of the Night-Wind known throughout Natlan as the eminent "Granny Itzli"</p>
+         </div>
+
+         <div class="character-card">
+           <img src="Audio&Video\Mualani.png" alt="Mualani">
+           <h3>Mualani</h3>
+           <p>One of the shining stars of the People of the springs new generations of young guides, If you've come to Natlan for sightseeing, theres no better companion you could choose</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Xilonen.png" alt="Xilonen">
+           <h3>Xilonen</h3>
+           <p>A blacksmith of the Nanatzcayan, especially skilled at finding a good work balance</p>
+         </div>
+		 
+         <div class="character-card">
+           <img src="Audio&Video\Mavuika.png" alt="Mavuika">
+           <h3>Mavuika</h3>
+           <p>Natlans Archon and leader, the everlasting hope for all living beings, and the cleansing flame that incinerates all evil</p>
+         </div>
+
+
+
+
+
+       </div>
+     </section>
+
+	 
+	 <!--GAMEPLAY========================================-->
+     <section id="Gameplay">
+       <h2><br><br>Gameplay<br><br></h2>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\Genshin-combat.png" alt="Combat" class="background-img">
+         <div class="text-box left">
+           <h3>Combat</h3>
+           <p>
+             Engage in fast-paced real-time battles using a variety of characters. Master team synergy and elemental reactions to defeat powerful enemies.
+           </p>
+         </div>
+       </div>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\Genshin Scenery.png" alt="Exploration" class="background-img">
+         <div class="text-box right">
+           <h3>World Exploration</h3>
+           <p>
+             Travel across Teyvat’s breathtaking landscapes. Climb, soar, dive, and uncover secrets at your own pace.
+           </p>
+         </div>
+       </div>
+
+       <div class="gameplay-block">
+         <img src="Audio&Video\genshin-impact-co-op.png" alt="Co-op" class="background-img">
+         <div class="text-box left">
+           <h3>Co-op</h3>
+           <p>
+             Team up with friends or strangers online to explore together and take on world bosses in shared adventures.
+           </p>
+         </div>
+       </div>
+     </section>
+
+	 
+	 
+     <section id="Media">
+       <h2>Media<br><br></h2>
+       <div class="SlideShow-Container">
+
+         <div class="NavButtons">
+           <button onclick="prevSlide()">&#10094;</button>
+           <button onclick="nextSlide()">&#10095;</button>
+         </div>
+
+         <div class="Slides">
+           <img src="..\HoyoVerse Files\Genshin BG Home.jpeg" alt= "img1">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img2.png" alt= "img2">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img3.png" alt= "img3">
+         </div>
+
+         <div class="Slides">
+           <img src="Audio&Video\img4.png" alt= "img4">
+         </div>
+		 
+         <div class="Slides">
+           <img src="Audio&Video\img5.png" alt= "img5">
+         </div>
+
+       </div>
+     </section>
+	   
+	  
+	 <footer>© 2025. All rights reserved.</footer>
+
+  </div>
+
+  <script>
+///////////////////////////////////////////////////////////////////////////////////
+    // auto plays background video when user opens page
+    const video = document.getElementById("bg-video");
+    
+	
+	
+    window.addEventListener("load", () => {
+
+      video.play().catch(err => {
+        console.log("Autoplay failed:", err);
+	  });
+	  
+    });
+	
+	
+	// Button audio function
+    const audio = document.getElementById("BGAudio");
+    const toggleBtn = document.getElementById("toggle-audio");
+
+    // change button value  (if muted or not muted)
+    toggleBtn.addEventListener("click", () => {
+      audio.muted = !audio.muted;
+      toggleBtn.textContent = audio.muted ? "🔇 Music Off" : "🔊 Music On";
+  
+    // Play Audio once button click
+      audio.play().catch(err => {
+        console.log("Audio play failed:", err);
+      });
+    });
+	
+	 let slides = document.querySelectorAll('.Slides'); 
+     let currentSlide = 0;
+     let slideInterval = setInterval(nextSlide, 5000)
+
+
+     //Shows the specific slide needed and hide the others
+     function showSlide(index) {
+       slides.forEach((slide, i) => {
+         slide.style.display = (i === index) ? 'block' : 'none';
+       });
+     }
+     
+	 //Resets the interval of going to the next slide when button click
+	 function resetInterval() {
+	     
+	     clearInterval(slideInterval);
+		 slideInterval = setInterval(nextSlide, 5000)
+	 
+	 }
+
+	 //Function for buttons
+	 function prevSlide() {
+	     
+		 currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+         showSlide(currentSlide);
+		 resetInterval();
+	 
+	 }
+	 
+	 function nextSlide() {
+	 
+	     currentSlide = (currentSlide + 1) % slides.length;
+         showSlide(currentSlide);
+		 resetInterval();
+	 
+	 }
+	 
+	 
+
+     //Show The Slides
+     showSlide(currentSlide);
+	
+	
+///////////////////////////////////////////////////////////////////////////////////
+  </script>
+
+</body>
+</html>
